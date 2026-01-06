@@ -1,0 +1,26 @@
+{
+  "name": "unreel-x402-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for Unreel AI video generation with x402 payments",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx index.ts",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.9.0",
+    "@x402/axios": "^2.1.0",
+    "@x402/svm": "^2.1.0",
+    "@solana/kit": "^2.1.1",
+    "@scure/base": "^1.2.6",
+    "axios": "^1.13.2",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}
