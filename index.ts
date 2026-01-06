@@ -304,15 +304,27 @@ async function main() {
     "Generate a short video from a text prompt using Unreel AI. Costs ~$25 USDC per video (gasless). Returns a job ID for tracking.",
     {
       prompt: z.string().describe("Text description of the video to generate"),
+      reference_images: z.array(z.string()).optional().describe("Optional array of image URLs for style/character reference. AI auto-classifies into character refs vs backgrounds."),
+      webhook_url: z.string().optional().describe("Optional URL to POST results when job completes"),
+      webhook_secret: z.string().optional().describe("Optional secret for HMAC-SHA256 signature in X-Webhook-Signature header"),
       wait_for_completion: z.boolean().optional().describe("If true, wait for video completion. Default: false"),
     },
-    async ({ prompt, wait_for_completion = false }) => {
+    async ({ prompt, reference_images, webhook_url, webhook_secret, wait_for_completion = false }) => {
       console.error(`[unreel-x402-mcp] Generating video: "${prompt.substring(0, 50)}..."`);
+      if (reference_images?.length) {
+        console.error(`[unreel-x402-mcp] Reference images: ${reference_images.length}`);
+      }
+      if (webhook_url) {
+        console.error(`[unreel-x402-mcp] Webhook: ${webhook_url}`);
+      }
 
       try {
-        const response = await makePaidRequest("/api/generate-x402", {
-          script_text: prompt,
-        });
+        const requestBody: any = { script_text: prompt };
+        if (reference_images?.length) requestBody.reference_images = reference_images;
+        if (webhook_url) requestBody.webhook_url = webhook_url;
+        if (webhook_secret) requestBody.webhook_secret = webhook_secret;
+
+        const response = await makePaidRequest("/api/generate-x402", requestBody);
 
         const { job_id, status, status_url } = response;
         console.error(`[unreel-x402-mcp] Job created: ${job_id}`);
