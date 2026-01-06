@@ -30,8 +30,8 @@ This MCP server acts as a bridge between AI assistants (like Claude) and the Unr
 ### 1. Clone and Install
 
 ```bash
-git clone https://github.com/getfoundry/unreel-mcp.git
-cd unreel-mcp
+git clone https://github.com/getfoundry/unreel-mcp-x402.git
+cd unreel-mcp-x402
 npm install
 ```
 
