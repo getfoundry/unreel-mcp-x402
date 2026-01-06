@@ -70,7 +70,7 @@ Restart Claude Desktop to load the MCP server. Then ask Claude:
 
 | Tool | Description | Cost |
 |------|-------------|------|
-| `generate-video` | Generate a video from a text prompt | ~$1 USDC |
+| `generate-video` | Generate a video from a text prompt | ~$25 USDC |
 | `check-job-status` | Check video generation progress | Free |
 | `get-payment-info` | Get current pricing info | Free |
 
@@ -151,7 +151,7 @@ npm start
 
 | Item | Cost |
 |------|------|
-| Video generation | ~$1 USDC per video |
+| Video generation | ~$25 USDC per video |
 | Gas fees | Free (sponsored by Kora) |
 | Network | Solana mainnet |
 

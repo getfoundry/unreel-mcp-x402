@@ -108,7 +108,7 @@ async function main() {
   // Tool: Generate video from text prompt
   server.tool(
     "generate-video",
-    "Generate a short video from a text prompt using Unreel AI. Costs ~$1 USDC per video. Returns a job ID for tracking.",
+    "Generate a short video from a text prompt using Unreel AI. Costs ~$25 USDC per video. Returns a job ID for tracking.",
     {
       prompt: z.string().describe("Text description of the video to generate (e.g., 'A sunset over the ocean with gentle waves')"),
       wait_for_completion: z.boolean().optional().describe("If true, wait for video completion before returning. Default: false"),
@@ -259,7 +259,7 @@ async function main() {
             {
               type: "text",
               text: JSON.stringify({
-                price_usdc: "1.00",
+                price_usdc: "25.00",
                 network: "solana",
                 asset: "USDC",
                 note: "Payment info endpoint unavailable, showing defaults",
